@@ -1,0 +1,59 @@
+[app]
+env = "dev" # dev | beta | prod
+debug = true
+
+[db]
+
+    [db.default]
+    driver = "mysql" # mysql | postgres | sqlite3
+    dsn = "gozero:gozero@tcp(localhost:3306)/gozero?timeout=10s&charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local" # mysql
+    # dsn = "host=localhost port=5432 user=root password=secret dbname=test connect_timeout=10 sslmode=disable" # postgres
+    # dsn = "file::memory:?cache=shared" # sqlite3
+    max_open_conns = 20
+    max_idle_conns = 10
+    conn_max_idle_time = 60 # 秒
+    conn_max_lifetime = 60 # 秒
+
+
+[redis]
+
+    [redis.default]
+    address = "127.0.0.1:6379"
+    password = ""
+    database = 0
+    connect_timeout = 10 # 秒
+    read_timeout = 10 # 秒
+    write_timeout = 10 # 秒
+    pool_size = 10
+    pool_limit = 20
+    idle_timeout = 60 # 秒
+    wait_timeout = 10 # 秒
+    prefill_parallelism = 0 # 预填充连接数
+
+
+[email]
+
+    [email.default]
+    host = "smtp.exmail.qq.com"
+    port = 25
+    username = ""
+    password = ""
+
+[log]
+
+    [log.default]
+    path = "app.log"
+    max_size = 500
+    max_age = 0
+    max_backups = 0
+    compress = true
+
+# 自定义配置
+
+[foo]
+amount = 100
+ports = [80, 81, 82]
+weight = 50.6
+prices = [23.5, 46.7, 45.9]
+hosts = ["127.0.0.1", "192.168.1.1", "192.168.1.80"]
+birthday = "2019-07-12 13:03:19"

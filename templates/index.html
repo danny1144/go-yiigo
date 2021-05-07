@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+</head>
+
+<h1>待办</h1>
+
+<div>
+    <div>
+        <form action="/" method="post">
+            添加待办：
+            <textarea name="title" style="width: 200px;height: 50px"></textarea>
+            <button type="submit">添加</button>
+        </form>
+    </div>
+    <ul>
+        {{range $key,$value:=.Items}}
+        <li> {{$key}} {{$value}}</li>
+        {{end}}
+    </ul>
+
+</div>
+</html>
