@@ -40,10 +40,20 @@ type Todo struct {
 	Title string
 	Items []string
 }
-
+type  Book struct {
+	Book string
+	Price int64
+}
 func indexGetHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("hhhh")
 
+	b1:=Book{}
+	err:=yiigo.DB().Get(&b1,"select  * from book where book=?","go-zero")
+
+	if err != nil{
+		panic(err)
+	}
+	fmt.Println(b1)
 	values, _ := client.LRange("todos", 0, 10).Result()
 	templates.ExecuteTemplate(w, "index.html", Todo{
 		Title: "首页",
